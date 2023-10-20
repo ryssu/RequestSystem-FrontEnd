@@ -1,0 +1,32 @@
+.rounded-card {
+    background-color: white;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.card-img-top.rounded-square {
+    border-radius: 30px;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    color: white;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #006400 !important;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #797d85;
+}
+
+.card-img-top {
+    height: 180px; 
+    object-fit: cover;
+}

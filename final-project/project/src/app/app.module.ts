@@ -7,6 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
+import { ViewDogInfoComponent } from './view-dog-info/view-dog-info.component';
+import { AddDogComponent } from './add-dog/add-dog.component';
 
 
 
@@ -17,6 +19,8 @@ import { ContactComponent } from './contact/contact.component';
     IndexComponent,
     LoginComponent,
     ContactComponent,
+    ViewDogInfoComponent,
+    AddDogComponent,
 
 
   ],
