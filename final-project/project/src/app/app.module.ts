@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { ViewDogInfoComponent } from './view-dog-info/view-dog-info.component';
 import { AddDogComponent } from './add-dog/add-dog.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 
@@ -21,6 +22,7 @@ import { AddDogComponent } from './add-dog/add-dog.component';
     ContactComponent,
     ViewDogInfoComponent,
     AddDogComponent,
+    AboutusComponent,
 
 
   ],
