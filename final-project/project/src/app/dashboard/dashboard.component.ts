@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit{
   dogs: Dog[] = [];
   dog: Dog = new Dog();
@@ -20,5 +21,9 @@ export class DashboardComponent implements OnInit{
     });
   }
 
-
+  displayImage(binaryData: Uint8Array): string {
+    const blob = new Blob([binaryData], { type: 'jpeg' });
+    return URL.createObjectURL(blob);
+  }
+  
 }

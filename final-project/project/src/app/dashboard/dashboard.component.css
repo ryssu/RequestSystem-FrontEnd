@@ -1,3 +1,11 @@
+html, body {
+    height: 100%;
+}
+.footer {
+    background-color: #006400;
+    color: white;
+}
+
 .rounded-card {
     background-color: white;
     border-radius: 30px;
@@ -29,4 +37,21 @@
 .card-img-top {
     height: 180px; 
     object-fit: cover;
+}
+
+.justify-text {
+    text-align: justify;
+}
+
+.custom-card {
+    width: 18rem; 
+    margin-bottom: 20px; 
+    margin-top: 20px; 
+    margin-right: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 20px; 
+}
+
+.custom-card .card-img-top {
+    border-radius: 20px 20px 0 0; /* Add rounded corners to the top of the image */
 }

@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Dog } from '../model/dog'
 import { Injectable } from '@angular/core'
@@ -14,11 +14,11 @@ export class DogService {
     public getDogs(): Observable<Dog[]>{
         return this.http.get<Dog[]> (this.dogsUrl + '/dogs');
     }
-/** 
+
     public getDog(id: number): Observable<Dog>{
         return this.http.get<Dog>(this.dogsUrl + '/show-dog/' + id.toString());
     }
-
+/** 
     public addDog(dog: Dog): Observable<Dog> {
         return this.http.post<Dog>(this.dogsUrl + '/add-dog/', dog);
     }
