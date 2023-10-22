@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit{
   ngOnInit(): void {
     this.dogService.getDogs().subscribe((data: Dog[]) => {
       this.dogs = data;
+      console.log(this.dogs);
     });
   }
   
