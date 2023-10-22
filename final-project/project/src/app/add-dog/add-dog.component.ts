@@ -14,12 +14,12 @@ export class AddDogComponent {
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router) {
     this.newDog = this.fb.group({
       name:  ' ',
-      breed: ' ',
-      status: ' ',
       photo: new Uint8Array(0),
+      breed: ' ',
       age: 0,
       doa: new Date(),
-      personality: ' '
+      personality: ' ',
+      status: ' '
     });
   }
   
