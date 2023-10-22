@@ -49,7 +49,7 @@
         <div class="card-deck">
           <div *ngFor="let dog of dogs">
             <div class="card custom-card"> 
-              <img src="{{dog.photo}}" class="card-img-top" alt="Dog Image">
+              <img src="{{dog.photo}}" class="card-img-top" alt="Photo of {{dog.name}}">
               <div class="card-body">
                 <h5 class="card-title">
                   {{dog.name}}
@@ -65,7 +65,9 @@
         </div>
       </div>
       
-      
+      <div *ngFor="let dog of dogs">
+        <img src="{{dog.photo}}">
+      </div>
       
 
     <!-- Footer -->

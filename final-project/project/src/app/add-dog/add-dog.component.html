@@ -45,38 +45,38 @@
             <div class="col-md-6">
                 <div class="card rounded-card shadow p-4">
                     <h2 class="text-center">Add a Dog</h2>
-                    <form>
+                    <form [formGroup]="newDog" (ngSubmit)="addDog()">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name">
                         </div>
     
                         <div class="form-group">
                             <label for="photo">Photo</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="photo">
+                                <input type="file" formControlName="photo" class="custom-file-input" id="photo">
                                 <label class="custom-file-label" for="photo">Choose file</label>
                             </div>
                         </div>
     
                         <div class="form-group">
                             <label for="breed">Breed</label>
-                            <input type="text" class="form-control" id="breed" placeholder="Enter breed">
+                            <input type="text" formControlName="breed" class="form-control" id="breed" placeholder="Enter breed">
                         </div>
     
                         <div class="form-group">
                             <label for="age">Age (in months)</label>
-                            <input type="number" class="form-control" id="age" placeholder="Enter age">
+                            <input type="number" formControlName="age" class="form-control" id="age" placeholder="Enter age">
                         </div>
     
                         <div class="form-group">
                             <label for="arrivalDate">Date of Arrival in Shelter</label>
-                            <input type="date" class="form-control" id="arrivalDate">
+                            <input type="date" formControlName="doa" class="form-control" id="doa">
                         </div>
     
                         <div class="form-group">
                             <label for="personality">Personality</label>
-                            <textarea class="form-control" id="personality" rows="4" placeholder="Enter personality"></textarea>
+                            <textarea class="form-control" formControlName="personality" id="personality" rows="4" placeholder="Enter personality"></textarea>
                         </div>
     
                         <div class="form-group">
@@ -88,7 +88,7 @@
                             </select>
                         </div>
     
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Add Dog</button>
                     </form>
                 </div>
             </div>

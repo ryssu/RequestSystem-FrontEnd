@@ -18,11 +18,11 @@ export class DogService {
     public getDog(id: number): Observable<Dog>{
         return this.http.get<Dog>(this.dogsUrl + '/show-dog/' + id.toString());
     }
-/** 
+
     public addDog(dog: Dog): Observable<Dog> {
         return this.http.post<Dog>(this.dogsUrl + '/add-dog/', dog);
     }
-
+/** 
     public updateDog(id: number, dog: Dog): Observable<Dog> {
         return this.http.put<Dog>(this.dogsUrl + '/update-dog/'+ id.toString(), dog);
     }

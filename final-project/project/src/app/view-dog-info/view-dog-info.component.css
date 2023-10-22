@@ -41,6 +41,10 @@
     object-fit: cover;
 }
 
+.btn .btn-danger {
+    margin-left: 20px;
+}
+
 .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
 }
