@@ -41,24 +41,32 @@
                 </li>
             </ul>
         </div>
+        <a class="btn btn-success ml-auto" href="/add-dog">+ Add a dog</a>
     </nav>
 
     <!--Records-->
     <div class="container mt-5 pt-5">
         <div class="card-deck">
-        
-            <div *ngFor="let dog of dogs">
-                <div class="card custom-card"> 
-                    <img src="{{dog.photo}}" class="card-img-top" alt="Dog Image">
-                    <div class="card-body">
-                        <h5 class="card-title">{{dog.name}}</h5>
-                        <p class="card-text">{{dog.breed}}</p>
-                        <a href="/view-dog-info" class="btn btn-success">Get to know me</a>
-                    </div>
-                </div>
+          <div *ngFor="let dog of dogs">
+            <div class="card custom-card"> 
+              <img src="{{dog.photo}}" class="card-img-top" alt="Dog Image">
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{dog.name}}
+                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1" [ngClass]="{'bg-success': dog.status === 'AVAILABLE', 'bg-secondary': dog.status === 'PROCESSING', 'bg-primary': dog.status === 'ADOPTED'}">
+                    {{dog.status}}
+                  </span>
+                </h5>
+                <p class="card-text">{{dog.breed}}</p>
+                <a href="/view-dog-info/{{dog.id}}" class="btn btn-success">Get to know me</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+      
+      
+      
 
     <!-- Footer -->
 

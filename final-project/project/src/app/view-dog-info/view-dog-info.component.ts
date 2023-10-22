@@ -10,22 +10,24 @@ import { Router } from '@angular/router';
   templateUrl: './view-dog-info.component.html',
   styleUrls: ['./view-dog-info.component.css']
 })
-export class ViewDogInfoComponent implements OnInit{
-  dog: Dog = new Dog()
+export class ViewDogInfoComponent implements OnInit {
+  dog: Dog = new Dog(); // You can provide default values here
 
-  constructor(private route: ActivatedRoute, private dogService: DogService, private router: Router, private fb: FormBuilder) { 
-    console.log('entered constructor' + this.dog.name)
-  }
-  
+  constructor(
+    private route: ActivatedRoute,
+    private dogService: DogService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
+
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
         const id = params['id'];
         this.dogService.getDog(id).subscribe(data => {
-          this.dog = data;
+          this.dog = data; // Populate the dog object with data from the API
         });
       }
     });
   }
-  
 }

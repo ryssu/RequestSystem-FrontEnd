@@ -51,6 +51,15 @@
                             <div class="form-group">
                                 <label for="id">ID</label>
                                 <input type="text" class="form-control" id="id" value="{{dog.id}}" readonly>
+                                <br>
+                                <div class="form-group">
+                                    <label for="status">Status:</label>
+                                    <select class="form-control" id="status" [(ngModel)]="dog.status">
+                                        <option value="AVAILABLE">Available</option>
+                                        <option value="PROCESSING">Processing</option>
+                                        <option value="ADOPTED">Adopted</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -73,10 +82,10 @@
         
                                 <div class="form-group">
                                     <label for="personality">Personality</label>
-                                    <textarea class="form-control" id="personality" rows="4" placeholder="{{dog.personality}}"></textarea>
+                                    <textarea class="form-control" id="personality" rows="4" value="{{dog.personality}}"></textarea>
                                 </div>
         
-                                <button type="submit" class="btn btn-success">I'm interested!</button>
+                                <button type="submit" class="btn btn-success">Update Information</button>
                             </form>
                         </div>
                     </div>

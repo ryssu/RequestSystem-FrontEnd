@@ -20,10 +20,5 @@ export class DashboardComponent implements OnInit{
       this.dogs = data;
     });
   }
-
-  displayImage(binaryData: Uint8Array): string {
-    const blob = new Blob([binaryData], { type: 'jpeg' });
-    return URL.createObjectURL(blob);
-  }
   
 }

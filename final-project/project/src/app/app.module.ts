@@ -12,9 +12,7 @@ import { AddDogComponent } from './add-dog/add-dog.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'contact', component: ContactComponent },
   {path: 'add-dog', component: AddDogComponent},
-  {path: 'view-dog-info', component: ViewDogInfoComponent},
+  {path: 'view-dog-info/:id', component: ViewDogInfoComponent},
   {path: 'aboutus', component: AboutusComponent}
 ];
 
