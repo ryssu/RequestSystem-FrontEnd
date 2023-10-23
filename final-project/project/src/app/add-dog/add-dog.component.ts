@@ -38,4 +38,29 @@ export class AddDogComponent {
         );
     }
   }  
+
+  onFileSelected(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+        const file = inputElement.files[0];
+
+        // Read the selected file as an ArrayBuffer
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (e.target) {
+                const arrayBuffer = e.target.result as ArrayBuffer;
+                const uint8Array = new Uint8Array(arrayBuffer);
+
+                // Now you have the file data in Uint8Array format, which can be sent to the server as needed (e.g., for saving as a LongBlob).
+                
+                // Example: Send the uint8Array to your server-side code to save it as a LongBlob.
+                // You can use a service or API call to send the data to your backend.
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    }
 }
+
+}
+
+
