@@ -42,10 +42,11 @@
     </nav>
 
     <!--Records-->
-    <div class="container mt-5 pt-5">
-        <div class="card-deck">
-          <div *ngFor="let dog of dogs">
-            <div class="card custom-card"> 
+      <div class="container mt-5 pt-5">
+        <h2> Dog Adoption Records </h2>
+        <div class="row left-content-start">
+          <div *ngFor="let dog of dogs" class="col-lg-4 col-md-6 mb-4">
+            <div class="card custom-card">
               <img src="{{dog.photo}}" class="card-img-top" alt="Photo of {{dog.name}}">
               <div class="card-body">
                 <h5 class="card-title">
@@ -63,6 +64,10 @@
       </div>
       
       <!-- test only (remove this)-->
+      <br>
+      <br>
+      <br>
+      <button [disabled] class="btn btn-warning">FOR TESTING ONLY</button>
       <div *ngFor="let dog of dogs">
         <img src="{{dog.photo}}">
       </div>
