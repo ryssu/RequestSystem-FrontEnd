@@ -42,4 +42,5 @@ testem.log
 Thumbs.db
 
 final-project/project/.angular
+final-project/project/node_modules
 
