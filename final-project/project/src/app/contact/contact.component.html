@@ -9,6 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="contact.component.css">
 
+    <style>
+        .contact-info p {
+            margin-bottom: 5px; 
+       
+        }
+        .contact-heading {
+            margin-bottom: 5px; 
+            font-size: 70px;
+           
+        }
+    </style>
 </head>
 <body>
 
@@ -27,7 +38,7 @@
                     <a class="nav-link" href="/dashboard">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/aboutus">About</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/contact">Contact</a>
@@ -37,30 +48,23 @@
       
     </nav>
 
-    <!-- Contact Form Section -->
+    <!-- Contact Information Section -->
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-0"> <!-- Updated offset to 0 to remove the offset -->
-                <div class="contact-box"> <!-- Wrap the form with contact-box -->
-                    <h2 class="text-center mb-4">Adopt a Pet</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </form>
-                </div>
+                
+                    <h2 class="text-left mb-1 contact-heading"><strong>Contact</strong></h2>
+                    <h2 class="text-left mb-4 contact-heading"><strong>Information</strong></h2>
+                    <div class="contact-info">
+                        <p><strong>Vashti Bauson</strong></p>
+                        <p><em>vldelapaz@mymail.mapua.edu.ph</em></p>
+                        <p><strong>Althea Cruz</strong></p>
+                        <p><em>alcruz@mymail.mapua.edu.ph</em></p>
+                        <p><strong>Miguel Escandor</strong></p>
+                        <p><em>msescandor@mymail.mapua.edu.ph</em></p>
+                        
+                    </div>
+                
             </div>
         </div>
     </div>
