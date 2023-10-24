@@ -19,17 +19,17 @@ export class DogService {
         return this.http.get<Dog>(this.dogsUrl + '/show-dog/' + id.toString());
     }
 
-    public addDog(dog: Dog): Observable<Dog> {
-        return this.http.post<Dog>(this.dogsUrl + '/add-dog/', dog);
+    public addDog(formData: FormData)  {
+        return this.http.post<any>(this.dogsUrl + '/add-dog/', formData);
     }
-/** 
-    public updateDog(id: number, dog: Dog): Observable<Dog> {
-        return this.http.put<Dog>(this.dogsUrl + '/update-dog/'+ id.toString(), dog);
+ 
+    public updateDog(id: number, formData: FormData) {
+        return this.http.put<any>(this.dogsUrl + '/update-dog/'+ id.toString(), formData);
     }
     
     public deleteDog(id: number): Observable<void> {
         return this.http.delete<void>(this.dogsUrl + '/delete-dog/' + id.toString());
       }
-*/      
+      
       
 }

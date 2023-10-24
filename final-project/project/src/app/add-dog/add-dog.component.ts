@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AddDogComponent {
   newDog: FormGroup;
+  selectedFile : File;
 
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router) {
     this.newDog = this.fb.group({
@@ -24,42 +25,33 @@ export class AddDogComponent {
   }
   
 
-  addDog() {
-    if (this.newDog.valid) {
-      this.dogService.addDog(this.newDog.value)
-        .subscribe(
-          (response) => {
-            console.log('Dog added:', response);
-            this.router.navigate(['/dashboard']);
-          },
-          (error) => {
-            console.error('Error adding dog:', error);
-          }
-        );
-    }
-  }  
+  onFileChanged(event){
+    this.selectedFile = event.target.files[0];
+  }
 
-  onFileSelected(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    if (inputElement.files && inputElement.files.length > 0) {
-        const file = inputElement.files[0];
+  onUpload(){
+    console.log(this.selectedFile);
+    const testData = new FormData();
+    testData.append('photo', this.selectedFile, this.selectedFile.name);
+    testData.append('name', this.newDog.value.name);
+    testData.append('breed', this.newDog.value.breed);
+    testData.append('age', this.newDog.value.age.toString());
+    testData.append('doa', this.newDog.value.doa.toString());
+    testData.append('personality', this.newDog.value.personality);
+    testData.append('status', this.newDog.value.status);
+    this.dogService.addDog(testData)
+    .subscribe(
+      (response) => {
+        console.log('Dog added:', response);
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        console.error('Error adding dog:', error);
+      }
+    );    
+  }
 
-        // Read the selected file as an ArrayBuffer
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            if (e.target) {
-                const arrayBuffer = e.target.result as ArrayBuffer;
-                const uint8Array = new Uint8Array(arrayBuffer);
 
-                // Now you have the file data in Uint8Array format, which can be sent to the server as needed (e.g., for saving as a LongBlob).
-                
-                // Example: Send the uint8Array to your server-side code to save it as a LongBlob.
-                // You can use a service or API call to send the data to your backend.
-            }
-        };
-        reader.readAsArrayBuffer(file);
-    }
-}
 
 }
 

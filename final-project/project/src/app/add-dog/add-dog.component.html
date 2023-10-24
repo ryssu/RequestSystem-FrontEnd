@@ -42,7 +42,7 @@
             <div class="col-md-6">
                 <div class="card rounded-card shadow p-4">
                     <h2 class="text-center">Add a Dog</h2>
-                    <form [formGroup]="newDog" (ngSubmit)="addDog()">
+                    <form [formGroup]="newDog" (ngSubmit)="onUpload()">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name">
@@ -50,7 +50,7 @@
     
                         <div class="form-group">
                             <label for="photo">Photo</label>
-                            <input type="file" (change)="onFileSelected($event)" class="form-control-file" id="photo" accept="image/*">
+                            <input type="file" (change)="onFileChanged($event)" class="form-control-file" id="photo" accept="image/*">
                         </div>                        
     
                         <div class="form-group">
@@ -75,7 +75,7 @@
     
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select class="form-control" id="status">
+                            <select class="form-control" formControlName="status" id="status">
                                 <option value="AVAILABLE" selected>AVAILABLE</option>
                                 <option value="PROCESSING">PROCESSING</option>
                                 <option value="ADOPTED">ADOPTED</option>
