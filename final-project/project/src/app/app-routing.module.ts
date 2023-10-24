@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ViewDogInfoComponent } from './view-dog-info/view-dog-info.component';
 import { AddDogComponent } from './add-dog/add-dog.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'index', pathMatch: 'full' }, // Redirect to '/index' for the default route
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent },
   {path: 'add-dog', component: AddDogComponent},
   {path: 'view-dog-info/:id', component: ViewDogInfoComponent},
-  {path: 'aboutus', component: AboutusComponent}
+  {path: 'aboutus', component: AboutusComponent},
+  {path: 'signup', component: SignupComponent}
 ];
 
 @NgModule({
