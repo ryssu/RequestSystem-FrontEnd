@@ -14,18 +14,18 @@ export class AddDogComponent {
 
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router) {
     this.newDog = this.fb.group({
-      name:  ' ',
+      name:  '',
       photo: new Uint8Array(0),
-      breed: ' ',
+      breed: '',
       age: 0,
       doa: new Date(),
-      personality: ' ',
-      status: ' '
+      personality: '',
+      status: ''
     });
   }
   
 
-  onFileChanged(event){
+  onFileChanged(event){ //May check dito about length ng file something chuchu
     this.selectedFile = event.target.files[0];
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Dog } from '../model/dog';
 import { DogService } from '../service/dogservice';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,13 +17,14 @@ export class ViewDogInfoComponent implements OnInit {
   dogID: number;
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.dogUpdate = this.fb.group({
-      name:  ' ',
+      id: '',
+      name:  'null',
       photo: new Uint8Array(0),
-      breed: ' ',
+      breed: '',
       age: 0,
       doa: new Date(),
-      personality: ' ',
-      status: ' '
+      personality: '',
+      status: ''
     });
   }
 
@@ -41,6 +42,7 @@ export class ViewDogInfoComponent implements OnInit {
 
   initializeForm(): void {
     this.dogUpdate = this.fb.group({
+      id: this.dog.id,
       name: this.dog.name,
       photo: this.dog.photo,
       breed: this.dog.breed,
@@ -58,14 +60,35 @@ export class ViewDogInfoComponent implements OnInit {
   onUpload(){
     console.log(this.selectedFile);
     const testData = new FormData();
-    testData.append('photo', this.selectedFile, this.selectedFile.name);
+    testData.append('id', this.dogUpdate.value.id);
+    testData.append('photo', this.selectedFile);
     testData.append('name', this.dogUpdate.value.name);
     testData.append('breed', this.dogUpdate.value.breed);
-    testData.append('age', this.dogUpdate.value.age.toString());
-    testData.append('doa', this.dogUpdate.value.doa.toString());
+    testData.append('age', this.dogUpdate.value.age);
+    testData.append('doa', this.dogUpdate.value.doa);
     testData.append('personality', this.dogUpdate.value.personality);
     testData.append('status', this.dogUpdate.value.status);
-    this.dogService.updateDog(this.dogID,testData)
+    console.log(testData.get('id'));
+    console.log(testData.get('name'));
+    console.log(testData.get('breed'));
+    console.log(testData.get('age'));
+    console.log(testData.get('doa'));
+    this.dogService.updateDog(this.dogUpdate.value.id,testData)
+    .subscribe(
+      (response) => {
+        console.log('Dog updated:', response);
+        console.log(testData);
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        console.error('Error adding dog:', error);
+        console.log(testData);
+      }
+    );    
+  }
+  
+  executeDeleteFunction(): void {
+    this.dogService.deleteDog(this.dogUpdate.value.id)
     .subscribe(
       (response) => {
         console.log('Dog updated:', response);
@@ -74,14 +97,7 @@ export class ViewDogInfoComponent implements OnInit {
       (error) => {
         console.error('Error adding dog:', error);
       }
-    );    
-  }
-  executeDeleteFunction(): void {
-    this.dogService.deleteDog(this.dogID)
-    .subscribe(data => {
-      console.log('Country deleted successfully:', data);
-      this.router.navigate(['/countries']);
-    });
+    );
   }
 
 
