@@ -15,12 +15,13 @@ export class AddDogComponent {
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router) {
     this.newDog = this.fb.group({
       name:  '',
-      photo: new Uint8Array(0),
+      photo: null,
       breed: '',
       age: 0,
       doa: new Date(),
       personality: '',
-      status: ''
+      status: '',
+      gender: ''
     });
   }
   
@@ -32,21 +33,19 @@ export class AddDogComponent {
   onUpload(){
     console.log(this.selectedFile);
     const testData = new FormData();
-    testData.append('photo', this.selectedFile, this.selectedFile.name);
+    testData.append('photo', this.selectedFile);
     testData.append('name', this.newDog.value.name);
     testData.append('breed', this.newDog.value.breed);
     testData.append('age', this.newDog.value.age.toString());
     testData.append('doa', this.newDog.value.doa.toString());
     testData.append('personality', this.newDog.value.personality);
     testData.append('status', this.newDog.value.status);
+    testData.append('gender', this.newDog.value.gender);
     this.dogService.addDog(testData)
     .subscribe(
-      (response) => {
-        console.log('Dog added:', response);
+      (data) => {
+        console.log('Dog added:', data);
         this.router.navigate(['/dashboard']);
-      },
-      (error) => {
-        console.error('Error adding dog:', error);
       }
     );    
   }

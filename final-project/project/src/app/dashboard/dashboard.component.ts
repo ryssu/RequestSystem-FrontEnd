@@ -11,15 +11,23 @@ import { Router } from '@angular/router';
 
 export class DashboardComponent implements OnInit{
   dogs: Dog[] = [];
-  dog: Dog = new Dog();
+  isDataLoaded: boolean = false;
 
   constructor(private dogService: DogService, private router: Router) { }
 
   ngOnInit(): void {
     this.dogService.getDogs().subscribe((data: Dog[]) => {
       this.dogs = data;
-      console.log(this.dogs);
+      this.sortDogsAlphabetically();
+      this.isDataLoaded = true;
     });
   }
+
+  sortDogsAlphabetically() {
+    this.dogs.sort((a, b) => {
+      // Use the localeCompare method to compare dog names in a case-insensitive manner
+      return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+    });
+  }  
   
 }

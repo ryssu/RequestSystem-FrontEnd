@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 export class ViewDogInfoComponent implements OnInit {
   dog: Dog = new Dog(); // You can provide default values here
   dogUpdate: FormGroup;
-  selectedFile : File;
+  selectedFile : File = null;
   dogID: number;
+  uploadedImageUrl: string | ArrayBuffer;
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.dogUpdate = this.fb.group({
       id: '',
@@ -24,7 +25,8 @@ export class ViewDogInfoComponent implements OnInit {
       age: 0,
       doa: new Date(),
       personality: '',
-      status: ''
+      status: '',
+      gender: ''
     });
   }
 
@@ -49,56 +51,63 @@ export class ViewDogInfoComponent implements OnInit {
       age: this.dog.age,
       doa: this.dog.doa,
       personality: this.dog.personality,
-      status: this.dog.status
+      status: this.dog.status,
+      gender: this.dog.gender
     });
   }
 
   onFileChanged(event){
     this.selectedFile = event.target.files[0];
+        // Display the selected image
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.uploadedImageUrl = e.target.result;
+        };
+        reader.readAsDataURL(this.selectedFile);
+      
   }
 
   onUpload(){
     console.log(this.selectedFile);
     const testData = new FormData();
     testData.append('id', this.dogUpdate.value.id);
-    testData.append('photo', this.selectedFile);
+    if (this.selectedFile != null){
+      testData.append('photo', this.selectedFile);
+    }
+    
     testData.append('name', this.dogUpdate.value.name);
     testData.append('breed', this.dogUpdate.value.breed);
     testData.append('age', this.dogUpdate.value.age);
     testData.append('doa', this.dogUpdate.value.doa);
     testData.append('personality', this.dogUpdate.value.personality);
     testData.append('status', this.dogUpdate.value.status);
-    console.log(testData.get('id'));
-    console.log(testData.get('name'));
-    console.log(testData.get('breed'));
-    console.log(testData.get('age'));
-    console.log(testData.get('doa'));
+    testData.append('gender', this.dogUpdate.value.gender);
+    console.log(this.dog.photo);
     this.dogService.updateDog(this.dogUpdate.value.id,testData)
     .subscribe(
       (response) => {
         console.log('Dog updated:', response);
-        console.log(testData);
         this.router.navigate(['/dashboard']);
       },
       (error) => {
-        console.error('Error adding dog:', error);
-        console.log(testData);
+        console.error('Error updating dog:', error);
       }
     );    
   }
   
   executeDeleteFunction(): void {
-    this.dogService.deleteDog(this.dogUpdate.value.id)
-    .subscribe(
+    this.dogService.deleteDog(this.dogUpdate.value.id).subscribe(
       (response) => {
-        console.log('Dog updated:', response);
+        console.log('Dog deleted:', response);
         this.router.navigate(['/dashboard']);
       },
       (error) => {
-        console.error('Error adding dog:', error);
+        console.error('Error deleting dog:', error);
       }
-    );
+    );    
   }
-
+  goBack(): void {
+    this.router.navigate(['/dashboard']);
+  }
 
 }
