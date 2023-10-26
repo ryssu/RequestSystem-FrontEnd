@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
+import { UserDashboardComponent } from './users/user-dashboard/user-dashboard.component';
+import { UserViewDogInfoComponent } from './users/user-view-dog-info/user-view-dog-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SignupComponent } from './signup/signup.component';
     ViewDogInfoComponent,
     AddDogComponent,
     AboutusComponent,
-    SignupComponent
+    SignupComponent,
+    UserDashboardComponent,
+    UserViewDogInfoComponent
   ],
   imports: [
     ReactiveFormsModule,

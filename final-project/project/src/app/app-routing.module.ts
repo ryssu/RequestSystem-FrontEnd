@@ -8,6 +8,8 @@ import { ViewDogInfoComponent } from './view-dog-info/view-dog-info.component';
 import { AddDogComponent } from './add-dog/add-dog.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { SignupComponent } from './signup/signup.component';
+import { UserDashboardComponent } from './users/user-dashboard/user-dashboard.component';
+import { UserViewDogInfoComponent } from './users/user-view-dog-info/user-view-dog-info.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'index', pathMatch: 'full' }, // Redirect to '/index' for the default route
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path: 'add-dog', component: AddDogComponent},
   {path: 'view-dog-info/:id', component: ViewDogInfoComponent},
   {path: 'aboutus', component: AboutusComponent},
-  {path: 'create-account', component: SignupComponent}
+  {path: 'create-account', component: SignupComponent},
+  {path: 'user-dashboard', component: UserDashboardComponent},
+  {path: 'user-view-dog-info', component: UserViewDogInfoComponent}
 ];
 
 @NgModule({
