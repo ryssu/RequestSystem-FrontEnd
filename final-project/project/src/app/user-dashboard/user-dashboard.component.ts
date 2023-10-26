@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Dog } from '../model/dog'; 
+import { Dog } from '../model/dog';
 import { DogService } from '../service/dogservice';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-dashboard',

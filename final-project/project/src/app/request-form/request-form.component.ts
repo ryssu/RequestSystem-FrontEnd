@@ -13,6 +13,7 @@ export class RequestFormComponent {
 
   constructor(private requestService: RequestService, private fb: FormBuilder, private router: Router) {
     this.newRequest = this.fb.group({
+      dogId: '',
       reqName: '',
       reqContact: '',
       reqMessage: '',

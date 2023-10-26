@@ -16,6 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
 import { RequestFormComponent } from './request-form/request-form.component';
 import { CommonModule } from '@angular/common';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserViewDogInfoComponent } from './user-view-dog-info/user-view-dog-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CommonModule } from '@angular/common';
     AddDogComponent,
     AboutusComponent,
     RequestFormComponent,
-    SignupComponent
+    SignupComponent,
+    UserDashboardComponent,
+    UserViewDogInfoComponent
   ],
   imports: [
     ReactiveFormsModule,

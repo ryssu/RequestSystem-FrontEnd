@@ -59,7 +59,7 @@
               <div class="card-body">
                 <h5 class="card-title">
                   {{dog.name}}
-                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1" value="{'bg-success': dog.status === 'AVAILABLE', 'bg-secondary': dog.status === 'PROCESSING', 'bg-primary': dog.status === 'ADOPTED'}">
+                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1" [ngClass]="{'bg-success': dog.status === 'AVAILABLE', 'bg-secondary': dog.status === 'PROCESSING', 'bg-primary': dog.status === 'ADOPTED'}">
                     {{dog.status}}
                   </span>
                 </h5>
