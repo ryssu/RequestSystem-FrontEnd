@@ -13,6 +13,10 @@ export class AccountService {
     this.accountsUrl = 'http://localhost:18080/api'
   }
 
+  public checkAccount(username : string, password : string) : Observable<Account> {
+    return this.http.get<Account>(this.accountsUrl + '/users/' + username + '/' + password);
+  }
+
   public getAccount(id: number): Observable<Account>{
     return this.http.get<Account>(this.accountsUrl + '/show-account/' + id.toString());
   }

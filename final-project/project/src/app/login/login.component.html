@@ -26,16 +26,16 @@
                                         <h1 class="h4 text-gray-900 mb-4">Welcome to Dog Adopt!</h1>
                                     </div>
 
-                                    <form class="user" method="POST" id="frmLogin">
+                                    <form [formGroup]="accountCheck" (ngSubmit)="onSubmit()">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="InputUsername" aria-describedby="usernameHelp" placeholder="Username" name="Username" required>
+                                            <input type="text" class="form-control form-control-user" id="InputUsername" aria-describedby="usernameHelp" formControlName="username" placeholder="Username" name="Username" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="Password" required>
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" formControlName="password" name="Password" required>
                                         </div>
-                                        <a href="/dashboard" class="btn btn-success btn-user btn-block" onclick="submitLogin()">
+                                        <button type="submit" class="btn btn-success btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                     </form>
                                     <hr>
 
