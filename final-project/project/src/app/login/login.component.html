@@ -51,5 +51,8 @@
             </div>
         </div>
     </div>
+    <div *ngIf="errorMessage" class="alert alert-danger fixed-bottom">
+        {{ errorMessage }}
+    </div>
     </body>
 </html>
