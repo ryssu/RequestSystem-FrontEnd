@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Dog } from '../model/dog';
 import { DogService } from '../service/dogservice';
 import { Router } from '@angular/router';
+import { Account } from '../model/account';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -13,8 +15,9 @@ import { Router } from '@angular/router';
 export class UserDashboardComponent implements OnInit{
   dogs: Dog[] = [];
   isDataLoaded: boolean = false;
+  account: Account;
 
-  constructor(private dogService: DogService, private router: Router) { }
+  constructor(private dogService: DogService, private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dogService.getDogs().subscribe((data: Dog[]) => {
@@ -22,6 +25,12 @@ export class UserDashboardComponent implements OnInit{
       this.sortDogsAlphabetically();
       this.isDataLoaded = true;
     });
+    this.account = this.dataService.getDataPersistent('account');
+  }
+
+  logout(){
+    this.dataService.removeDataPersistent('account');
+    this.router.navigate(['index']);
   }
 
   sortDogsAlphabetically() {

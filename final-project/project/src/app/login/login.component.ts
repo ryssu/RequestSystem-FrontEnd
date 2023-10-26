@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AccountService } from '../service/account.service';
 import { Router } from '@angular/router';
 import { Account } from '../model/account';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Account } from '../model/account';
 export class LoginComponent {
   accountCheck: FormGroup;
   account : Account;
-  constructor(private accountService: AccountService, private fb: FormBuilder, private router: Router) {
+  constructor(private accountService: AccountService, private fb: FormBuilder, private router: Router, private dataService: DataService) {
     this.accountCheck = this.fb.group({
       username: '',
       password: '',
@@ -26,16 +27,18 @@ export class LoginComponent {
         this.account = account;
         if (account.role === 'ADMIN') {
           // Redirect to admin dashboard
+          this.dataService.setDataPersistent('account', account);
           this.router.navigate(['/dashboard']);
         } else if (account.role === 'USER') {
           // Redirect to user dashboard
+          this.dataService.setDataPersistent('account', account);
           this.router.navigate(['/user-dashboard']);
         }
         //this.router.navigate(['/dashboard']);
       },
       (error) => {
         // Handle error
-        console.error('Error creating country:', error);
+        console.error('Error: ', error);
       }
     );
 
