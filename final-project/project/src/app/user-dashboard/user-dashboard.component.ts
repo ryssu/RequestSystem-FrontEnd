@@ -16,7 +16,6 @@ export class UserDashboardComponent implements OnInit{
   dogs: Dog[] = [];
   isDataLoaded: boolean = false;
   account: Account;
-
   constructor(private dogService: DogService, private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -25,7 +24,14 @@ export class UserDashboardComponent implements OnInit{
       this.sortDogsAlphabetically();
       this.isDataLoaded = true;
     });
+    this.accountCheck();
+  }
+
+  accountCheck(){
     this.account = this.dataService.getDataPersistent('account');
+    if (this.account == null || this.account.role != 'USER'){ 
+      this.router.navigate(['index']);
+    }
   }
 
   logout(){
