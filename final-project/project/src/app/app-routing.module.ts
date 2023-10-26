@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'add-dog', component: AddDogComponent},
   {path: 'view-dog-info/:id', component: ViewDogInfoComponent},
   {path: 'aboutus', component: AboutusComponent},
-  {path: 'signup', component: SignupComponent}
+  {path: 'create-account', component: SignupComponent}
 ];
 
 @NgModule({

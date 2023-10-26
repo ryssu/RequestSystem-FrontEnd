@@ -25,7 +25,7 @@ import { SignupComponent } from './signup/signup.component';
     ViewDogInfoComponent,
     AddDogComponent,
     AboutusComponent,
-    SignupComponent,
+    SignupComponent
   ],
   imports: [
     ReactiveFormsModule,
