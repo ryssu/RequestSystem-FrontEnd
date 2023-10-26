@@ -41,7 +41,7 @@
             <div class="col-md-8"> 
                 <br>
                 <div class="card rounded-card shadow p-4">
-                    <form [formGroup]="dogUpdate" (ngSubmit)="onUpload()">
+                    <form>
                     <div class="row">
                         <div class="col-md-5 text-center">
                             <h2 class="mt-3">Meet {{dog.name}}!</h2>
@@ -50,14 +50,12 @@
                             <img [src]="uploadedImageUrl ? uploadedImageUrl : 'data:image/png;base64,' + dog.photo" alt="Pet Photo" class="rounded-image img-fluid">
                             <div class="form-group">
                                 <br>
-                                <input type="file" (change)= "onFileChanged($event)" class="form-control-file" id="photo" accept="image/*" value="Upload New Photo">
-                                <br>
                                 <label for="id">ID:</label>
                                 <input formControlName="id" type="text" class="form-control" id="id" value="{{dog.id}}" readonly>
                                 <br>
                                 <div class="form-group">
                                     <label for="status">Status:</label>
-                                    <select formControlName="status" class="form-control" id="status" [(ngModel)]="dog.status">
+                                    <select formControlName="status" class="form-control" id="status" value="dog.status">
                                         <option value="AVAILABLE">Available</option>
                                         <option value="PROCESSING">Processing</option>
                                         <option value="ADOPTED">Adopted</option>
@@ -70,30 +68,30 @@
                             
                                 <div class="form-group">
                                     <label for="breed">Breed</label>
-                                    <input formControlName="breed" type="text" class="form-control" id="breed" value="{{dog.breed}}"/>
+                                    <input formControlName="breed" type="text" class="form-control" id="breed" value="{{dog.breed}}" readonly>
                                 </div>
         
                                 <div class="form-group">
                                     <label for="gender">Gender</label>
-                                    <input formControlName="gender" type="text" class="form-control" id="gender" value="{{dog.gender}}"/>
+                                    <input formControlName="gender" type="text" class="form-control" id="gender" value="{{dog.gender}}" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="age">Age (in months)</label>
-                                    <input formControlName="age" type="number" class="form-control" id="age" value="{{dog.age}}"/>
+                                    <input formControlName="age" type="number" class="form-control" id="age" value="{{dog.age}}" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="arrivalDate">Date of Arrival in Shelter</label>
-                                    <input formControlName="doa" type="date" class="form-control" id="arrivalDate" value="{{dog.doa}}"/>
+                                    <input formControlName="doa" type="date" class="form-control" id="arrivalDate" value="{{dog.doa}}" readonly>
                                 </div>
         
                                 <div class="form-group">
                                     <label for="personality">Personality</label>
-                                    <textarea formControlName="personality" class="form-control" id="personality" rows="4" value="{{dog.personality}}"></textarea>
+                                    <textarea formControlName="personality" class="form-control" id="personality" rows="4" value="{{dog.personality}}" readonly></textarea>
                                 </div>
         
-                                <button type="submit" class="btn btn-success mr-2">I'm Interested!</button>
+                                <button href="/request-form" class="btn btn-success mr-2">I'm Interested!</button>
                                 <button type = "button" (click)= "goBack()" class="btn btn-danger">Back</button>
                             
                         </div>

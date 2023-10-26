@@ -52,19 +52,19 @@
     <!--Records-->
       <div class="container mt-5 pt-5">
         <h2> Dog Adoption Records </h2>
-        <div class="row left-content-start" *ngIf="isDataLoaded">
+        <div class="row left-content-start">
           <div *ngFor="let dog of dogs" class="col-lg-4 col-md-6 mb-4">
             <div class="card custom-card">
               <img src="data:image/png;base64,{{dog.photo}}" class="card-img-top" alt="Photo of {{dog.name}}">
               <div class="card-body">
                 <h5 class="card-title">
                   {{dog.name}}
-                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1" [ngClass]="{'bg-success': dog.status === 'AVAILABLE', 'bg-secondary': dog.status === 'PROCESSING', 'bg-primary': dog.status === 'ADOPTED'}">
+                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1" value="{'bg-success': dog.status === 'AVAILABLE', 'bg-secondary': dog.status === 'PROCESSING', 'bg-primary': dog.status === 'ADOPTED'}">
                     {{dog.status}}
                   </span>
                 </h5>
                 <p class="card-text">{{dog.breed}}</p>
-                <a href="/view-dog-info/{{dog.id}}" class="btn btn-success">Get to know me</a>
+                <a href="/user-view-dog-info/{{dog.id}}" class="btn btn-success">Get to know me</a>
               </div>
             </div>
           </div>

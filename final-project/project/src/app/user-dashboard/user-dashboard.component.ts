@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Dog } from 'src/app/model/dog'; 
-import { DogService } from 'src/app/service/dogservice';
+import { Dog } from '../model/dog'; 
+import { DogService } from '../service/dogservice';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css']
 })
-export class UserDashboardComponent {
+
+export class UserDashboardComponent implements OnInit{
   dogs: Dog[] = [];
   isDataLoaded: boolean = false;
 

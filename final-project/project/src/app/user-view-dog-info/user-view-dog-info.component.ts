@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Dog } from 'src/app/model/dog';
-import { DogService } from 'src/app/service/dogservice';
+import { Dog } from '../model/dog';
+import { DogService } from '../service/dogservice';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
