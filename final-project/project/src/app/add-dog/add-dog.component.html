@@ -42,45 +42,51 @@
             <div class="col-md-6">
                 <div class="card rounded-card shadow p-4">
                     <h2 class="text-center">Add a Dog</h2>
-                    <form [formGroup]="newDog" (ngSubmit)="onUpload()">
+                    <form [formGroup]="newDog" (ngSubmit)="checkFields()">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name">
+                            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name" required>
                         </div>
     
                         <div class="form-group">
                             <label for="photo">Photo</label>
-                            <input type="file" (change)="onFileChanged($event)" class="form-control-file" id="photo" accept="image/*">
-                        </div>                        
+                            <div class="custom-file">
+                                <input type="file" (change)="onFileChanged($event)" class="custom-file-input" id="photo" accept="image/*">
+                                <label class="custom-file-label" for="photo">{{ selectedFileName || 'Choose file' }}</label>
+                            </div>
+                        </div>                                                                                       
     
                         <div class="form-group">
                             <label for="breed">Breed</label>
-                            <input type="text" formControlName="breed" class="form-control" id="breed" placeholder="Enter breed">
+                            <input type="text" formControlName="breed" class="form-control" id="breed" placeholder="Enter breed" required>
                         </div>
 
                         <div class="form-group">
                             <label for="gender">Gender</label>
-                            <input type="text" formControlName="gender" class="form-control" id="gender" placeholder="Enter gender">
+                            <select formControlName="gender" class="form-control" id="gender" required>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="age">Age (in months)</label>
-                            <input type="number" formControlName="age" class="form-control" id="age" placeholder="Enter age">
+                            <input type="number" formControlName="age" class="form-control" id="age" placeholder="Enter age" required>
                         </div>
     
                         <div class="form-group">
                             <label for="arrivalDate">Date of Arrival in Shelter</label>
-                            <input type="date" formControlName="doa" class="form-control" id="doa">
+                            <input type="date" formControlName="doa" class="form-control" id="doa" required>
                         </div>
     
                         <div class="form-group">
                             <label for="personality">Personality</label>
-                            <textarea class="form-control" formControlName="personality" id="personality" rows="4" placeholder="Enter personality"></textarea>
+                            <textarea class="form-control" formControlName="personality" id="personality" rows="4" placeholder="Enter personality" required></textarea>
                         </div>
     
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select class="form-control" formControlName="status" id="status">
+                            <select class="form-control" formControlName="status" id="status" required>
                                 <option value="AVAILABLE" selected>AVAILABLE</option>
                                 <option value="PROCESSING">PROCESSING</option>
                                 <option value="ADOPTED">ADOPTED</option>

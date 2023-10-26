@@ -46,7 +46,7 @@
                     <form [formGroup]="newRequest" (ngSubmit)="checkFields()">
                         <div class="form-group">
                             <label for="dogId">Dog ID</label>
-                            <input type="text" class="form-control" formControlName="dogId" id="dogId" name="dogId" required>
+                            <input type="text" class="form-control" formControlName="dogId" id="dogId" name="dogId" [value]="dogFK" readonly>
                         </div>
                         <div class="form-group">
                             <label for="reqName">Your Complete Name</label>

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AddDogComponent {
   newDog: FormGroup;
   selectedFile : File;
+  selectedFileName: string; 
 
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router) {
     this.newDog = this.fb.group({
@@ -28,6 +29,9 @@ export class AddDogComponent {
 
   onFileChanged(event){ //May check dito about length ng file something chuchu
     this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      this.selectedFileName = this.selectedFile.name;
+    }
   }
 
   onUpload(){
@@ -50,6 +54,16 @@ export class AddDogComponent {
     );    
   }
 
+  checkFields(): boolean {
+    for (const controlName in this.newDog.controls) {
+      if (this.newDog.get(controlName).hasError('required')) {
+        alert('Please fill out all the required fields.');
+        return false;
+      }
+    }
+    this.onUpload();
+    return true;
+  }
 
 
 }

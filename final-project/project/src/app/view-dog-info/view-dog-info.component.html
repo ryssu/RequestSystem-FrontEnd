@@ -50,17 +50,23 @@
                             <img [src]="uploadedImageUrl ? uploadedImageUrl : 'data:image/png;base64,' + dog.photo" alt="Pet Photo" class="rounded-image img-fluid">
                             <div class="form-group">
                                 <br>
-                                <input type="file" (change)= "onFileChanged($event)" class="form-control-file" id="photo" accept="image/*" value="Upload New Photo">
-                                <br>
-                                <label for="id">ID:</label>
+                                <!-- <input type="file" (change)= "onFileChanged($event)" class="form-control-file" id="photo" accept="image/*" value="Upload New Photo"> -->
+                                <div class="form-group">
+                                    <label for="photo">Upload new photo</label>
+                                    <div class="custom-file">
+                                        <input type="file" (change)="onFileChanged($event)" class="custom-file-input" id="photo" accept="image/*">
+                                        <label class="custom-file-label" for="photo">{{ selectedFileName || 'Choose file' }}</label>
+                                    </div>
+                                </div>
+                                <label for="id">ID</label>
                                 <input formControlName="id" type="text" class="form-control" id="id" value="{{dog.id}}" readonly>
                                 <br>
                                 <div class="form-group">
-                                    <label for="status">Status:</label>
+                                    <label for="status">Status</label>
                                     <select formControlName="status" class="form-control" id="status" [(ngModel)]="dog.status">
-                                        <option value="AVAILABLE">Available</option>
-                                        <option value="PROCESSING">Processing</option>
-                                        <option value="ADOPTED">Adopted</option>
+                                        <option value="AVAILABLE">AVAILABLE</option>
+                                        <option value="PROCESSING">PROCESSING</option>
+                                        <option value="ADOPTED">ADOPTED</option>
                                     </select>
                                 </div>
                             </div>
@@ -75,7 +81,10 @@
         
                                 <div class="form-group">
                                     <label for="gender">Gender</label>
-                                    <input formControlName="gender" type="text" class="form-control" id="gender" value="{{dog.gender}}"/>
+                                    <select formControlName="gender" class="form-control" id="gender" [(ngModel)]="dog.gender">
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -94,8 +103,8 @@
                                 </div>
         
                                 <button type="submit" class="btn btn-success mr-2">Update Information</button>
-                                <button type = "button" (click)= "executeDeleteFunction()" class="btn btn-danger">Delete Record</button>
-                                <button type = "button" (click)= "goBack()" class="btn btn-danger">Back</button>
+                                <button type = "button" (click)= "executeDeleteFunction()" class="btn btn-danger mr-2">Delete Record</button>
+                                <button type = "button" (click)= "goBack()" class="btn btn-secondary">Back</button>
                             
                         </div>
                     </div>

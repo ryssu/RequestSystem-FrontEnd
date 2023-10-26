@@ -14,6 +14,7 @@ export class ViewDogInfoComponent implements OnInit {
   dog: Dog = new Dog(); // You can provide default values here
   dogUpdate: FormGroup;
   selectedFile : File = null;
+  selectedFileName: string; 
   dogID: number;
   uploadedImageUrl: string | ArrayBuffer;
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
@@ -64,7 +65,9 @@ export class ViewDogInfoComponent implements OnInit {
           this.uploadedImageUrl = e.target.result;
         };
         reader.readAsDataURL(this.selectedFile);
-      
+        if (this.selectedFile) {
+          this.selectedFileName = this.selectedFile.name;
+        }
   }
 
   onUpload(){

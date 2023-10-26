@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class UserViewDogInfoComponent implements OnInit{
   dog: Dog = new Dog(); // You can provide default values here
-  dogUpdate: FormGroup;
+  dogRequest: FormGroup;
   selectedFile : File = null;
   dogID: number;
   uploadedImageUrl: string | ArrayBuffer;
   constructor(private dogService: DogService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
-    this.dogUpdate = this.fb.group({
+    this.dogRequest = this.fb.group({
       id: '',
       name:  'null',
       photo: new Uint8Array(0),
@@ -43,7 +43,7 @@ export class UserViewDogInfoComponent implements OnInit{
   }
 
   initializeForm(): void {
-    this.dogUpdate = this.fb.group({
+    this.dogRequest = this.fb.group({
       id: this.dog.id,
       name: this.dog.name,
       photo: this.dog.photo,
@@ -56,59 +56,13 @@ export class UserViewDogInfoComponent implements OnInit{
     });
   }
 
-  onFileChanged(event){
-    this.selectedFile = event.target.files[0];
-        // Display the selected image
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.uploadedImageUrl = e.target.result;
-        };
-        reader.readAsDataURL(this.selectedFile);
-      
-  }
-
-  onUpload(){
-    console.log(this.selectedFile);
-    const testData = new FormData();
-    testData.append('id', this.dogUpdate.value.id);
-    if (this.selectedFile != null){
-      testData.append('photo', this.selectedFile);
-    }
-    
-    testData.append('name', this.dogUpdate.value.name);
-    testData.append('breed', this.dogUpdate.value.breed);
-    testData.append('age', this.dogUpdate.value.age);
-    testData.append('doa', this.dogUpdate.value.doa);
-    testData.append('personality', this.dogUpdate.value.personality);
-    testData.append('status', this.dogUpdate.value.status);
-    testData.append('gender', this.dogUpdate.value.gender);
-    console.log(this.dog.photo);
-    this.dogService.updateDog(this.dogUpdate.value.id,testData)
-    .subscribe(
-      (response) => {
-        console.log('Dog updated:', response);
-        this.router.navigate(['/dashboard']);
-      },
-      (error) => {
-        console.error('Error updating dog:', error);
-      }
-    );    
-  }
-  
-  executeDeleteFunction(): void {
-    this.dogService.deleteDog(this.dogUpdate.value.id).subscribe(
-      (response) => {
-        console.log('Dog deleted:', response);
-        this.router.navigate(['/dashboard']);
-      },
-      (error) => {
-        console.error('Error deleting dog:', error);
-      }
-    );    
-  }
-
   goBack(): void {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/user-dashboard']);
+  }
+
+  initiateRequest(){
+    localStorage.setItem('dogId', this.dog.id.toString());
+    this.router.navigate(['/request-form']);
   }
 
 }
