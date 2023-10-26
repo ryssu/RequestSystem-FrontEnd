@@ -19,6 +19,7 @@ export class SignupComponent {
       myAddress: '',
       username: '',
       password: '',
+      role: '',
     });
   }
 
@@ -45,8 +46,21 @@ export class SignupComponent {
     if (password !== confirmPassword) {
       alert('Passwords do not match. Please try again.');
     } else {
+      this.newAccount.patchValue({ role: 'USER' });
       this.createAccount();
       this.router.navigate(['/login']);
     }
   }
+
+  checkFields(): boolean {
+    for (const controlName in this.newAccount.controls) {
+      if (this.newAccount.get(controlName).hasError('required')) {
+        alert('Please fill-out all the required fields.');
+        return false;
+      }
+    }
+    this.checkPasswordMatch();
+    return true;
+  }
+
 }
