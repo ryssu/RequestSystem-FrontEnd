@@ -18,6 +18,8 @@ import { RequestFormComponent } from './request-form/request-form.component';
 import { CommonModule } from '@angular/common';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserViewDogInfoComponent } from './user-view-dog-info/user-view-dog-info.component';
+import { AllRequestsNotifComponent } from './all-requests-notif/all-requests-notif.component';
+import { ShowRequestComponent } from './show-request/show-request.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { UserViewDogInfoComponent } from './user-view-dog-info/user-view-dog-inf
     RequestFormComponent,
     SignupComponent,
     UserDashboardComponent,
-    UserViewDogInfoComponent
+    UserViewDogInfoComponent,
+    AllRequestsNotifComponent,
+    ShowRequestComponent
   ],
   imports: [
     ReactiveFormsModule,

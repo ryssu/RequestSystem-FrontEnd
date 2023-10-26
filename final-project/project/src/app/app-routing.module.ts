@@ -11,6 +11,8 @@ import { SignupComponent } from './signup/signup.component';
 import { RequestFormComponent } from './request-form/request-form.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserViewDogInfoComponent } from './user-view-dog-info/user-view-dog-info.component';
+import { AllRequestsNotifComponent } from './all-requests-notif/all-requests-notif.component';
+import { ShowRequestComponent } from './show-request/show-request.component';
 
 /* const routes: Routes = [
   {path: '', redirectTo: 'index', pathMatch: 'full' }, 
@@ -71,6 +73,14 @@ const routes: Routes = [
   { 
     path: 'request-form', 
     component: RequestFormComponent 
+  },
+  { 
+    path: 'requests', 
+    component: AllRequestsNotifComponent 
+  },
+  { 
+    path: 'show-request/:id', 
+    component: ShowRequestComponent 
   },
   { path: 'create-account', 
     component: SignupComponent }

@@ -6,7 +6,7 @@
     <title>About Us - Dog Adopt</title>
     <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="dashboard.component.css">
+    <link rel="stylesheet" href="all-requests-notif.component.css">
 
     <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -53,25 +53,24 @@
             <img src="assets/bell.png" alt="Notification">
         </a>
     </div>
-        <a class="btn btn-success ml-auto" href="/add-dog">+ Add a dog</a>
+        
         <a class="btn btn-danger ml-2" href="#">Logout</a>
     </nav>
     <!--Records-->
       <div class="container mt-5 pt-5">
-        <h2> Dog Adoption Records </h2>
-        <div class="row left-content-start" *ngIf="isDataLoaded">
-          <div *ngFor="let dog of dogs" class="col-lg-4 col-md-6 mb-4">
+        <h2> All Requests Records </h2>
+        <div class="row left-content-start">
+          <div *ngFor="let request of requests" class="col-lg-4 col-md-6 mb-4">
             <div class="card custom-card">
-              <img src="data:image/png;base64,{{dog.photo}}" class="card-img-top" alt="Photo of {{dog.name}}">
               <div class="card-body">
                 <h5 class="card-title">
-                  {{dog.name}}
-                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1" [ngClass]="{'bg-success': dog.status === 'AVAILABLE', 'bg-secondary': dog.status === 'PROCESSING', 'bg-primary': dog.status === 'ADOPTED'}">
-                    {{dog.status}}
+                  Request for Dog ID No.
+                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1 bg-primary">
+                    {{request.dogId}}
                   </span>
                 </h5>
-                <p class="card-text">{{dog.breed}}</p>
-                <a href="/view-dog-info/{{dog.id}}" class="btn btn-success">Get to know me</a>
+                <p class="card-text">From {{request.reqName}}</p>
+                <a href="/show-request/{{request.reqId}}" class="btn btn-success">View Details</a>
               </div>
             </div>
           </div>
