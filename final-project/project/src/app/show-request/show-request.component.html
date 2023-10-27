@@ -38,12 +38,12 @@
 
     <div class="container mt-5 pt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8"> 
+            <div class="col-md-5"> 
                 <br>
-                <div class="card rounded-card shadow p-4">
+                <div class="card rounded-card shadow p-4 pt-0 pb-0">
                     <form [formGroup]="showReq">
                     <div class="row">
-                        <div class="col-md-7">
+                        
                                 <div class="form-group">
                                     <label for="reqId">Request ID</label>
                                     <input formControlName="reqId" type="number" class="form-control" id="reqId" value="{{request.reqId}}" readonly>
@@ -69,10 +69,12 @@
                                     <textarea formControlName="reqMessage" class="form-control" id="reqMessage" rows="4" value="{{request.reqMessage}}" readonly></textarea>
                                 </div>
         
-                                <button type = "button" (click)= "goBack()" class="btn btn-secondary">Back</button>
+                                
                             
-                        </div>
+                        
                     </div>
+                    <br>
+                    <button type = "button" (click)= "goBack()" class="btn btn-secondary">Back</button>
                     </form>
                 </div>
 

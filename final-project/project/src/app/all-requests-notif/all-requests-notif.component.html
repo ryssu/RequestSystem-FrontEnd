@@ -63,14 +63,14 @@
           <div *ngFor="let request of requests" class="col-lg-4 col-md-6 mb-4">
             <div class="card custom-card">
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   Request for Dog ID No.
                   <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1 bg-primary">
                     {{request.dogId}}
                   </span>
-                </h5>
+                </h6>
                 <p class="card-text">From {{request.reqName}}</p>
-                <a href="/show-request/{{request.reqId}}" class="btn btn-success">View Details</a>
+                <a href="/show-request/{{request.reqId}}" class="btn btn-success btn-sm">View Details</a>
               </div>
             </div>
           </div>

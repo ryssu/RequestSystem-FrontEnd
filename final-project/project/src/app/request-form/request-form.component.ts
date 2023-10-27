@@ -50,7 +50,7 @@ export class RequestFormComponent implements OnInit {
         console.log('Request added:', response);
         console.log(requestData);
         console.log(this.dogFK);
-        //this.router.navigate(['/user-dashboard']);
+        this.router.navigate(['/user-dashboard']);
       },
       (error) => {
         console.log(requestData)
