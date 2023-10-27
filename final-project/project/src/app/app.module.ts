@@ -39,8 +39,8 @@ import { ShowMyRequestComponent } from './show-my-request/show-my-request.compon
     UserViewDogInfoComponent,
     AllRequestsNotifComponent,
     ShowRequestComponent,
-    MyRequestsComponent,
-    ShowMyRequestComponent
+    ShowMyRequestComponent,
+    MyRequestsComponent
   ],
   imports: [
     ReactiveFormsModule,

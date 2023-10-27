@@ -56,9 +56,10 @@ h2 {
 }
 
 .custom-card {
-    width: 18rem; 
-    margin-bottom: 60px; 
-    margin-left: 25px;
+    width: 22rem; 
+    margin-bottom: 15px; 
+    margin-left: 0px;
+    margin-right: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     border-radius: 20px; 
 }

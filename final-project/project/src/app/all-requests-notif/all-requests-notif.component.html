@@ -58,14 +58,14 @@
     </nav>
     <!--Records-->
       <div class="container mt-5 pt-5">
-        <h2> All Requests Records </h2>
+        <h2> All Adoption Requests </h2>
         <div class="row left-content-start">
           <div *ngFor="let request of requests" class="col-lg-4 col-md-6 mb-4">
             <div class="card custom-card">
               <div class="card-body">
                 <h6 class="card-title">
                   Request for Dog ID {{request.dogId}}
-                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1 bg-primary">
+                  <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1 bg-primary" [ngClass]="{'bg-success': request.reqStatus === 'RESOLVED', 'bg-secondary': request.reqStatus === 'FOR REVIEW'}">
                     {{request.reqStatus}}
                   </span>
                 </h6>

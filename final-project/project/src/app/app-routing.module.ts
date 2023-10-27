@@ -13,6 +13,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserViewDogInfoComponent } from './user-view-dog-info/user-view-dog-info.component';
 import { AllRequestsNotifComponent } from './all-requests-notif/all-requests-notif.component';
 import { ShowRequestComponent } from './show-request/show-request.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
+import { ShowMyRequestComponent } from './show-my-request/show-my-request.component';
 
 /* const routes: Routes = [
   {path: '', redirectTo: 'index', pathMatch: 'full' }, 
@@ -81,6 +83,14 @@ const routes: Routes = [
   { 
     path: 'show-request/:id', 
     component: ShowRequestComponent 
+  },
+  { 
+    path: 'my-requests', 
+    component: MyRequestsComponent 
+  },
+  { 
+    path: 'my-show-request/:id', 
+    component: ShowMyRequestComponent 
   },
   { path: 'create-account', 
     component: SignupComponent }
