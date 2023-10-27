@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Request } from '../model/request';
 import { RequestService } from '../service/request.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-show-request',
@@ -13,14 +14,15 @@ export class ShowRequestComponent implements OnInit {
   request: Request = new Request(); 
   showReq: FormGroup;
   
-  constructor(private requestService: RequestService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(private requestService: RequestService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private dataService: DataService) {
     this.showReq = this.fb.group({
       reqId: '',
       dogId: '',
       reqName: '',
       reqContact: '',
       reqMessage: '',
-      reqStatus: ''
+      reqStatus: '',
+      userId: ''
     });
   }
 
@@ -30,10 +32,25 @@ export class ShowRequestComponent implements OnInit {
         const id = params['id'];
         this.requestService.getRequest(id).subscribe(data => {
           this.request = data; 
+          this.initializeForm();
         });
       }
     });
+    
   }
+
+  initializeForm(): void {
+    this.showReq = this.fb.group({
+      reqId: this.request.reqId,
+      dogId: this.request.dogId,
+      reqName: this.request.reqName,
+      reqContact: this.request.reqContact,
+      reqMessage: this.request.reqMessage,
+      reqStatus: this.request.reqStatus,
+      userId: this.request.userId
+    });
+  }
+
 
   goBack(): void {
     this.router.navigate(['/requests']);
@@ -46,7 +63,7 @@ export class ShowRequestComponent implements OnInit {
         .subscribe(
           response => {
             console.log('Request updated:', response);
-            this.request = Object.assign(this.request, updatedRequest);
+            //this.request = Object.assign(this.request, updatedRequest);
             this.goBack();
           },
           error => {
