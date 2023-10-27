@@ -4,6 +4,8 @@ import { RequestService } from '../service/request.service';
 import { Router } from '@angular/router';
 import { Dog } from '../model/dog';
 import { DogService } from '../service/dogservice';
+import { Account } from '../model/account';
+import { AccountService } from '../service/account.service';
 
 @Component({
   selector: 'app-request-form',
@@ -12,15 +14,19 @@ import { DogService } from '../service/dogservice';
 })
 export class RequestFormComponent implements OnInit {
   newRequest: FormGroup;
-  dogFK: number; // Add a property to store the dogId
+  dogFK: number; 
+  userFK: number;
+  user: Account;
   dog : Dog;
 
-  constructor(private requestService: RequestService, private fb: FormBuilder, private router: Router, private dogService : DogService) {
+  constructor(private requestService: RequestService, private fb: FormBuilder, private router: Router, private dogService : DogService, private accountService : AccountService) {
     this.newRequest = this.fb.group({
       dogId: '',
+      userId: '',
       reqName: '',
       reqContact: '',
       reqMessage: '',
+      status: ''
     });
   }
 
@@ -35,6 +41,17 @@ export class RequestFormComponent implements OnInit {
         this.dog = data;
       })
     }
+
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      this.userFK = parseInt(storedUserId, 10);
+      this.newRequest.patchValue({
+        userId: this.userFK,
+      });
+      this.accountService.getAccount(this.userFK).subscribe(data => {
+        this.user = data;
+      })
+    }
   }
 
   createRequest(){
@@ -43,6 +60,7 @@ export class RequestFormComponent implements OnInit {
     requestData.append('contact', this.newRequest.value.reqContact);
     requestData.append('message', this.newRequest.value.reqMessage);
     requestData.append('dogId', this.dogFK.toString());
+    requestData.append('userId', this.userFK.toString());
 
     this.requestService.createRequest(requestData)
     .subscribe(
@@ -108,6 +126,7 @@ export class RequestFormComponent implements OnInit {
         return false;
       }
     }
+    this.newRequest.patchValue({ status: 'DELIVERED' });
     this.createRequest();
     return true;
   }
