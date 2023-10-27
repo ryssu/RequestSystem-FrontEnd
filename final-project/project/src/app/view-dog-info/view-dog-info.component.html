@@ -55,7 +55,7 @@
                                     <label for="photo">Upload new photo</label>
                                     <div class="custom-file">
                                         <input type="file" (change)="onFileChanged($event)" class="custom-file-input" id="photo" accept="image/*">
-                                        <label class="custom-file-label" for="photo">{{ selectedFileName || 'Choose file' }}</label>
+                                        <label class="custom-file-label text-left text-truncate" for="photo">{{ selectedFileName || 'Choose file' }}</label>
                                     </div>
                                 </div>
                                 <label for="id">ID</label>
