@@ -21,11 +21,14 @@ export class UserDashboardComponent implements OnInit{
   ngOnInit(): void {
     this.dogService.getDogs().subscribe((data: Dog[]) => {
       this.dogs = data;
+      console.log('Setting userId in local storage:', this.account.myId);
+      localStorage.setItem('userId', this.account.myId.toString());
       this.sortDogsAlphabetically();
       this.isDataLoaded = true;
     });
     this.accountCheck();
   }
+  
 
   accountCheck(){
     this.account = this.dataService.getDataPersistent('account');

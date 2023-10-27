@@ -19,7 +19,8 @@ export class ShowRequestComponent implements OnInit {
       dogId: '',
       reqName: '',
       reqContact: '',
-      reqMessage: ''
+      reqMessage: '',
+      reqStatus: ''
     });
   }
 
@@ -36,5 +37,22 @@ export class ShowRequestComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/requests']);
+  }
+
+  update() {
+    if (this.showReq.valid) {
+      const updatedRequest = this.showReq.value;
+      this.requestService.updateRequest(this.request.reqId, updatedRequest)
+        .subscribe(
+          response => {
+            console.log('Request updated:', response);
+            this.request = Object.assign(this.request, updatedRequest);
+            this.goBack();
+          },
+          error => {
+            console.error('Error resolving request', error);
+          }
+        );
+    }
   }
 }

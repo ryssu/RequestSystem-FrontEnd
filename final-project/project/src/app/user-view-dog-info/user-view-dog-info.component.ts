@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Dog } from '../model/dog';
+import { Account } from '../model/account';
 import { DogService } from '../service/dogservice';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-view-dog-info.component.css']
 })
 export class UserViewDogInfoComponent implements OnInit{
-  dog: Dog = new Dog(); // You can provide default values here
+  dog: Dog = new Dog();
+  account: Account = new Account();
   dogRequest: FormGroup;
   selectedFile : File = null;
   dogID: number;
@@ -35,11 +37,11 @@ export class UserViewDogInfoComponent implements OnInit{
       if (params['id'] !== undefined) {
         const id = params['id'];
         this.dogService.getDog(id).subscribe(data => {
-          this.dog = data; // Populate the dog object with data from the API
+          this.dog = data; 
           this.initializeForm();
         });
       }
-    });
+    });    
   }
 
   initializeForm(): void {
@@ -62,6 +64,7 @@ export class UserViewDogInfoComponent implements OnInit{
 
   initiateRequest(){
     localStorage.setItem('dogId', this.dog.id.toString());
+    //localStorage.setItem('userId', this.account.myId.toString());
     this.router.navigate(['/request-form']);
   }
 

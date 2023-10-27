@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Dog } from '../model/dog';
 import { DogService } from '../service/dogservice';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit{
   dogs: Dog[] = [];
   isDataLoaded: boolean = false;
 
-  constructor(private dogService: DogService, private router: Router) { }
+  constructor(private dogService: DogService, private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dogService.getDogs().subscribe((data: Dog[]) => {
@@ -29,5 +30,10 @@ export class DashboardComponent implements OnInit{
       return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
     });
   }  
+
+  logout(){
+    this.dataService.removeDataPersistent('account');
+    this.router.navigate(['index']);
+  }
   
 }

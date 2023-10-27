@@ -5,4 +5,5 @@ export class Request {
     reqName: string = '';
     reqContact: string = '';
     reqMessage: string = '';
+    reqStatus: string = ''
 }

@@ -64,12 +64,12 @@
             <div class="card custom-card">
               <div class="card-body">
                 <h6 class="card-title">
-                  Request for Dog ID No.
+                  Request for Dog ID {{request.dogId}}
                   <span class="status-badge rounded-pill rounded-sm ml-2 px-2 py-1 bg-primary">
-                    {{request.dogId}}
+                    {{request.reqStatus}}
                   </span>
                 </h6>
-                <p class="card-text">From {{request.reqName}}</p>
+                <p class="card-text">From User ID {{request.userId}}</p>
                 <a href="/show-request/{{request.reqId}}" class="btn btn-success btn-sm">View Details</a>
               </div>
             </div>

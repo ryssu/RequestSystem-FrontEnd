@@ -21,7 +21,7 @@ export class RequestFormComponent implements OnInit {
 
   constructor(private requestService: RequestService, private fb: FormBuilder, private router: Router, private dogService : DogService, private accountService : AccountService) {
     this.newRequest = this.fb.group({
-      dogId: '',
+      dogId: 0,
       userId: '',
       reqName: '',
       reqContact: '',
@@ -50,8 +50,12 @@ export class RequestFormComponent implements OnInit {
       });
       this.accountService.getAccount(this.userFK).subscribe(data => {
         this.user = data;
-      })
+      });
+    } else {
+      console.error('userId is not found in local storage or is invalid.');
+      // Handle this error case gracefully, e.g., redirect to a login page or display an error message.
     }
+
   }
 
   createRequest(){
@@ -60,7 +64,8 @@ export class RequestFormComponent implements OnInit {
     requestData.append('contact', this.newRequest.value.reqContact);
     requestData.append('message', this.newRequest.value.reqMessage);
     requestData.append('dogId', this.dogFK.toString());
-    requestData.append('userId', this.userFK.toString());
+    requestData.append('userId', localStorage.getItem('userId'));
+    requestData.append('status', this.newRequest.value.status);
 
     this.requestService.createRequest(requestData)
     .subscribe(
@@ -78,46 +83,6 @@ export class RequestFormComponent implements OnInit {
     );
 
   }
-/*   onUpload(){
-    console.log(this.selectedFile);
-    
-    testData.append('photo', this.selectedFile);
-    testData.append('name', this.newDog.value.name);
-    testData.append('breed', this.newDog.value.breed);
-    testData.append('age', this.newDog.value.age.toString());
-    testData.append('doa', this.newDog.value.doa.toString());
-    testData.append('personality', this.newDog.value.personality);
-    testData.append('status', this.newDog.value.status);
-    testData.append('gender', this.newDog.value.gender);
-    this.dogService.addDog(testData)
-    .subscribe(
-      (data) => {
-        console.log('Dog added:', data);
-        this.router.navigate(['/dashboard']);
-      }
-    );    
-  } */
-
-
-/*   createRequest() {
-    if (this.newRequest.valid) {
-      this.newRequest.patchValue({
-        dogId: this.dog,
-      });      
-      this.requestService.createRequest(this.newRequest.value)
-        .subscribe(
-          (response) => {
-            console.log('Request added:', response);
-            console.log(this.newRequest.value);
-            this.router.navigate(['/user-dashboard']);
-          },
-          (error) => {
-            console.log(this.newRequest.value)
-            console.error('Error adding request:', error);
-          }
-        );
-    }
-  } */
 
   checkFields(): boolean {
     for (const controlName in this.newRequest.controls) {
@@ -126,7 +91,7 @@ export class RequestFormComponent implements OnInit {
         return false;
       }
     }
-    this.newRequest.patchValue({ status: 'DELIVERED' });
+    this.newRequest.patchValue({ status: 'FOR REVIEW' });
     this.createRequest();
     return true;
   }

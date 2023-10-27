@@ -25,4 +25,8 @@ export class RequestService {
     public createRequest(formData: FormData)  {
         return this.http.post<any>(this.requestsUrl + '/create-request/', formData);
     }
+
+    public updateRequest(id: number, formData: FormData) {
+        return this.http.put<any>(this.requestsUrl + '/update-request/'+ id.toString(), formData);
+    }
 }

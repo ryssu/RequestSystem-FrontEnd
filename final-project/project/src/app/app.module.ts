@@ -20,6 +20,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserViewDogInfoComponent } from './user-view-dog-info/user-view-dog-info.component';
 import { AllRequestsNotifComponent } from './all-requests-notif/all-requests-notif.component';
 import { ShowRequestComponent } from './show-request/show-request.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
+import { ShowMyRequestComponent } from './show-my-request/show-my-request.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ShowRequestComponent } from './show-request/show-request.component';
     UserDashboardComponent,
     UserViewDogInfoComponent,
     AllRequestsNotifComponent,
-    ShowRequestComponent
+    ShowRequestComponent,
+    MyRequestsComponent,
+    ShowMyRequestComponent
   ],
   imports: [
     ReactiveFormsModule,

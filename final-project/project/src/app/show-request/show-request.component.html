@@ -41,7 +41,7 @@
             <div class="col-md-5"> 
                 <br>
                 <div class="card rounded-card shadow p-4 pt-0 pb-0">
-                    <form [formGroup]="showReq">
+                    <form [formGroup]="showReq" (ngSubmit)="update()">
                     <div class="row">
                         
                                 <div class="form-group">
@@ -68,12 +68,17 @@
                                     <label for="reqMessage">Message</label>
                                     <textarea formControlName="reqMessage" class="form-control" id="reqMessage" rows="4" value="{{request.reqMessage}}" readonly></textarea>
                                 </div>
-        
-                                
-                            
+
+                                <div class="form-group">
+                                    <label for="reqStatus">Status</label>
+                                    <select formControlName="reqStatus" class="form-control" id="reqStatus" [value]="request.reqStatus">
+                                        <option value="FOR REVIEW">FOR REVIEW</option>
+                                        <option value="RESOLVED">RESOLVED</option>
+                                    </select>
+                                </div>
                         
                     </div>
-                    <br>
+                    <button type = "submit" class="btn btn-success mr-2">Resolve Request</button>
                     <button type = "button" (click)= "goBack()" class="btn btn-secondary">Back</button>
                     </form>
                 </div>
