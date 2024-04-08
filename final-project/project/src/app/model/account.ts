@@ -1,9 +1,12 @@
+import { UserRole } from "./userrole";
+
 export class Account {
     myId: number = 0;
-    firstName: string = '';
-    lastName: string = '';
-    myAddress: string = '';
-    username: string = '';
-    password: string = '';
-    role: string = '';
+    userID: string = "";
+    dateCreated: string = "";
+    username: string = "";
+    password: string = "";
+    role: UserRole; // Assuming UserRole is another TypeScript class representing the role
+
 }
+

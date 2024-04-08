@@ -28,14 +28,19 @@ export class LoginComponent {
         // Handle successful response
         this.account = account;
         if (account && account.role) {
-          if (account.role === 'ADMIN') {
+          if (account.role.roleName === 'ADMIN') {
             // Redirect to admin dashboard
             this.dataService.setDataPersistent('account', account);
-            this.router.navigate(['/dashboard']);
-          } else if (account.role === 'USER') {
+            //this.router.navigate(['/aboutus']);
+            this.errorMessage = "Supposedly this is working - ADMIN";
+          } else if (account.role.roleName === "USER") {
             // Redirect to user dashboard
             this.dataService.setDataPersistent('account', account);
-            this.router.navigate(['/user-dashboard']);
+            //this.router.navigate(['/index']);
+            this.errorMessage = "Supposedly this is working - USER";
+          }
+          else{
+            this.errorMessage = "Role is not being checked " + account.role;
           }
         } else {
           // Handle the case when 'account' is null or 'role' is not defined

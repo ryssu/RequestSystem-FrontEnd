@@ -22,9 +22,9 @@ export class AboutusComponent {
     this.account = this.dataService.getDataPersistent('account');
     if (this.account == null) {
       this.router.navigate(['index']);
-    } else if (this.account.role == 'ADMIN'){
+    } else if (this.account.role.roleName === "ADMIN"){
       this.router.navigate(['/dashboard']);
-    } else if (this.account.role == 'USER'){
+    } else if (this.account.role.roleName === "USER"){
       this.router.navigate(['/user-dashboard']);
     }
   }

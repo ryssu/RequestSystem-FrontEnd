@@ -32,7 +32,7 @@ export class UserDashboardComponent implements OnInit{
 
   accountCheck(){
     this.account = this.dataService.getDataPersistent('account');
-    if (this.account == null || this.account.role != 'USER'){ 
+    if (this.account == null || this.account.role.roleName === "ADMIN"){ 
       this.router.navigate(['index']);
     }
   }
